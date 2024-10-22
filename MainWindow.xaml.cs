@@ -87,22 +87,28 @@ namespace ПР6
         }
 
 
-        public void SelectionSort(int[] d) //сортировка выбором
+        public void SelectionSort(int[] arr) //сортировка выбором
         {
             int n = arr.Length;
-            for (int i = 0; i < n - 1; i++)
+            for (int i = 0; i <arr.Length - 1; i++)
             {
-                int minIndex = i;
-                for (int j = i + 1; j < n; j++)
+                //поиск минимального числа
+                int min = i;
+                for (int j = i + 1; j < arr.Length; j++)
                 {
-                    if (arr[j] < arr[minIndex])
+                    if (arr[j] < arr[min])
                     {
-                        minIndex = j;
+                        min = j;
                     }
                 }
-                Swap(arr, i, minIndex);
+                //обмен элементов
+                int temp = arr[min];
+                arr[min] = arr[i];
+                arr[i] = temp;
             }
+            return;
         }
+        
         public void QuickSort(int[] arr)
         {
             QuickSort(arr, 0, arr.Length - 1);
